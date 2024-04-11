@@ -1,0 +1,19 @@
+[
+    "Current user: snehj",
+    "Current groups: Everyone, Local account and member of Administrators group, Administrators, Users, Interactive, Console Logon, Authenticated Users, This Organization, snehjanarthanan@outlook.com, Local account, Local, Cloud Account Authentication",
+    "=================================================================================================",
+    "DESKTOP-SNEHA\\Administrator(Disabled): Built-in account for administering the computer/domain",
+    "|->Groups: Administrators",
+    "|->Password: CanChange-NotExpi-Req",
+    "DESKTOP-SNEHA\\DefaultAccount(Disabled): A user account managed by the system.",
+    "|->Groups: System Managed Accounts Group",
+    "|->Password: CanChange-NotExpi-NotReq",
+    "DESKTOP-SNEHA\\Guest(Disabled): Built-in account for guest access to the computer/domain",
+    "|->Groups: Guests",
+    "|->Password: NotChange-NotExpi-NotReq",
+    "DESKTOP-SNEHA\\snehj",
+    "|->Groups: Administrators,Users",
+    "|->Password: CanChange-NotExpi-Req",
+    "DESKTOP-SNEHA\\WDAGUtilityAccount(Disabled): A user account managed and used by the system for Windows Defender Application Guard scenarios.",
+    "|->Password: CanChange-Expi-Req"
+]

@@ -1,0 +1,48 @@
+[CmdletBinding()]
+param (
+  [Parameter()]
+  [switch]
+  $debug
+)
+
+# Gather KB from all patches installed
+function returnHotFixID {
+  param(
+    [string]$title
+  )
+  # Match on KB or if patch does not have a KB, return end result
+  if (($title | Select-String -AllMatches -Pattern 'KB(\d{4,6})').Matches.Value) {
+    return (($title | Select-String -AllMatches -Pattern 'KB(\d{4,6})').Matches.Value)
+  }
+  elseif (($title | Select-String -NotMatch -Pattern 'KB(\d{4,6})').Matches.Value) {
+    return (($title | Select-String -NotMatch -Pattern 'KB(\d{4,6})').Matches.Value)
+  }
+}
+
+function TimeElapsed { Write-Host "Time Running: $($stopwatch.Elapsed.Minutes):$($stopwatch.Elapsed.Seconds)" }
+
+Function Get-ClipBoardText {
+    Add-Type -AssemblyName PresentationCore
+    $text = [Windows.Clipboard]::GetText()
+    if ($text) {
+        Write-Host ""
+        TimeElapsed
+        Write-Host "=========|| ClipBoard text found:"
+        Write-Host $text
+      
+    }
+}
+
+
+ Write-Host "====================================||SYSTEM INFORMATION ||===================================="
+"The following information is curated. To get a full list of system information, run the cmdlet get-computerinfo"
+
+Write-Host "=========|| WINDOWS HOTFIXES"
+$Hotfix = Get-HotFix | Sort-Object -Descending -Property InstalledOn -ErrorAction SilentlyContinue | Select-Object HotfixID, Description, InstalledBy, InstalledOn
+$Hotfix | Format-Table -AutoSize
+
+
+Write-Host ""
+TimeElapsed
+Write-Host "=========|| ALL UPDATES INSTALLED"
+
